@@ -4,6 +4,14 @@
 
 import { EChartsOption, EChartsType } from 'echarts/types/dist/echarts'
 
+export type ControlType = {
+	id?: string
+	chart?: EChartsType
+	option?: EChartsOption
+	title?: string
+	container?: HTMLDivElement | null
+}
+
 export class Charts {
 	private chartsEmitters = new Map<
 		string,
@@ -11,19 +19,16 @@ export class Charts {
 			chart: EChartsType
 			option: EChartsOption
 			title?: string
+			container?: HTMLDivElement | null
 		}
 	>()
 
-	add = (
-		id: string,
-		chart?: EChartsType,
-		option?: EChartsOption,
-		title?: string
-	) => {
-		if (chart && option) {
+	add = ({ id, chart, option, title, container }: ControlType) => {
+		if (chart && option && id) {
 			// 添加图表
 			this.chartsEmitters.set(id, {
 				chart,
+				container,
 				option,
 				title,
 			})
@@ -49,9 +54,7 @@ export class Charts {
 		for (const key of this.chartsEmitters.keys()) {
 			list.push({
 				id: key,
-				chart: this.chartsEmitters.get(key)?.chart,
-				option: this.chartsEmitters.get(key)?.option,
-				title: this.chartsEmitters.get(key)?.title,
+				...this.chartsEmitters.get(key),
 			})
 		}
 		return list

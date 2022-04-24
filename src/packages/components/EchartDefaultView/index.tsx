@@ -1,6 +1,7 @@
-import { useRef, useState } from 'react'
-import { Space, Button, Drawer, Radio, Row, Divider, Tabs } from 'antd'
+import { useMemo, useRef, useState } from 'react'
+import { Space, Button, Drawer, Radio, Row, Divider, Tabs, Switch } from 'antd'
 import {
+	CloseOutlined,
 	DownOutlined,
 	LeftOutlined,
 	RightOutlined,
@@ -10,17 +11,25 @@ import {
 import type { DrawerProps } from 'antd'
 import type { EChartsOption, EChartsType } from 'echarts'
 
-import useEchartsTool from '../hooks/useEchartsTool'
-import useEventEmitter from '../hooks/useChartEventEmitter'
+import useEchartsTool from '@/packages/hooks/useInjection'
+import useChartEventEmitter from '@/packages/hooks/useChartEventEmitter'
+import useDarkMode from '@/packages/hooks/useDarkMode'
 
 import ReactEchartsJson from '../ReactEchartsJson'
 
+import type { ControlType } from '@/packages/hooks/useInjection/charts'
+
 import styles from './index.module.less'
+import { light, dark } from './style'
+
+import SunIcon from './icons/SunIcon'
+import DarkIcon from './icons/DarkIcon'
+import { LogView } from '@/packages'
 
 const { TabPane } = Tabs
 
-const EchartTool = () => {
-	const event = useEventEmitter({ global: true })
+const EchartDefaultView = () => {
+	const event = useChartEventEmitter({ global: true })
 	const currentIndex = useRef(0)
 
 	const { tool } = useEchartsTool({})
@@ -35,12 +44,13 @@ const EchartTool = () => {
 			title?: string
 		}[]
 	>([])
-	const [currentChart, setCurrentChart] = useState<{
-		id?: string
-		option?: EChartsOption
-		chart?: EChartsType
-		title?: string
-	}>()
+	const [currentChart, setCurrentChart] = useState<ControlType>()
+
+	const [darkMode, setDarkMode] = useDarkMode()
+
+	const styleMode = useMemo(() => {
+		return darkMode ? dark : light
+	}, [darkMode])
 
 	event.useSubscription('list', () => {
 		if (tool?.list().length) {
@@ -105,6 +115,7 @@ const EchartTool = () => {
 
 					<Drawer
 						title="图表配置"
+						className={darkMode ? styles['drawer-dark'] : ''}
 						placement={placement}
 						width={700}
 						height={400}
@@ -112,12 +123,31 @@ const EchartTool = () => {
 						closable={false}
 						onClose={onClose}
 						visible={visible}
+						bodyStyle={styleMode.drawerStyle}
+						headerStyle={{
+							...styleMode.drawerStyle,
+							borderBottomColor: darkMode ? '#191919' : '#fff',
+						}}
+						footerStyle={styleMode.drawerStyle}
 						extra={
 							<Space>
-								<Button onClick={onClose}>关闭</Button>
-								<Button type="primary" onClick={onClose}>
+								<Switch
+									checkedChildren={<DarkIcon />}
+									unCheckedChildren={<SunIcon />}
+									defaultChecked={darkMode}
+									onChange={(e: boolean) => {
+										setDarkMode(e)
+									}}
+								/>
+								{/* <Button type="primary" onClick={onClose}>
 									数据源
-								</Button>
+								</Button> */}
+								<Button
+									size="small"
+									shape="circle"
+									icon={<CloseOutlined />}
+									onClick={onClose}
+								></Button>
 							</Space>
 						}
 					>
@@ -128,24 +158,32 @@ const EchartTool = () => {
 								value={currentChart?.id}
 							>
 								{chartList?.map((item) => (
-									<Radio style={{ height: 48 }} value={item.id}>
+									<Radio
+										style={{ height: 48, color: styleMode.color }}
+										value={item.id}
+										key={item.id}
+									>
 										{item.title}（{item.id}）
 									</Radio>
 								))}
 							</Radio.Group>
 						</Row>
 						<Divider />
-						<Tabs defaultActiveKey="2">
+						<Tabs
+							defaultActiveKey="view"
+							className={darkMode ? styles['tab-dark'] : ''}
+						>
 							<TabPane
 								tab={<span style={{ fontSize: 16 }}>配置项视图</span>}
 								key="view"
 							>
-								<ReactEchartsJson
-									{...currentChart}
-									// option={{
-									// 	...(currentChart?.chart?.getOption() ?? {}),
-									// }}
-								/>
+								<ReactEchartsJson {...currentChart} darkMode={darkMode} />
+							</TabPane>
+							<TabPane
+								tab={<span style={{ fontSize: 16 }}>日志视图</span>}
+								key="log"
+							>
+								<LogView darkMode={darkMode} />
 							</TabPane>
 						</Tabs>
 					</Drawer>
@@ -155,4 +193,4 @@ const EchartTool = () => {
 	)
 }
 
-export default EchartTool
+export default EchartDefaultView

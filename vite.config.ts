@@ -15,8 +15,6 @@ export default defineConfig({
 					libraryName: 'antd',
 					esModule: true,
 					resolveStyle: (name) => {
-						console.log(name)
-
 						return `antd/es/${name}/style/index`
 					},
 				},

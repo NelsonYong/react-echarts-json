@@ -1,3 +1,4 @@
+import { useCreation } from 'ahooks'
 import { useEffect, useMemo, useRef } from 'react'
 
 import { EventEmitter, eventEmitterOverall } from './event'
@@ -12,15 +13,18 @@ export default function useChartEventEmitter<T = void>(options?: {
 		[options]
 	)
 
-	if (!ref.current) {
-		ref.current = eventEmitterOptions.global
-			? (ref.current = eventEmitterOverall)
-			: (ref.current = new EventEmitter())
-	}
+	const event = useCreation(() => {
+		if (!ref.current) {
+			ref.current = eventEmitterOptions.global
+				? (ref.current = eventEmitterOverall)
+				: (ref.current = new EventEmitter())
+		}
+		return ref.current
+	}, [eventEmitterOptions])
 
 	useEffect(() => {
-		return () => ref.current?.clear()
-	}, [])
+		return () => event?.clear()
+	}, [event])
 
-	return ref.current
+	return event
 }

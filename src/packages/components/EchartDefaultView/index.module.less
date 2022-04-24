@@ -1,0 +1,39 @@
+.container {
+	position: absolute;
+	bottom: 0;
+	left: 45%;
+	z-index: 999;
+	color: #0097e2;
+	font-size: 48px;
+	cursor: pointer;
+
+	.function {
+		font-size: 28px;
+		// transform: translateX(100%);
+		cursor: pointer;
+	}
+}
+
+.drawer-dark {
+	:global {
+		.ant-drawer-title {
+			color: #fff;
+		}
+
+		.ant-drawer-header ::before {
+			opacity: 0;
+		}
+
+		.ant-tabs-nav::before {
+			opacity: 0;
+		}
+	}
+}
+
+.tab-dark {
+	:global {
+		.ant-tabs-tab-btn {
+			color: #fff;
+		}
+	}
+}

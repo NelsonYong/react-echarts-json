@@ -1,6 +1,6 @@
 import useEcharts from '@/hooks/useEcharts'
 import { useEffect } from 'react'
-import { useEchartsTool } from '../packages'
+import { useInjection } from '../packages'
 
 const Demo = () => {
 	const { container: salesDemoContainer, chart } = useEcharts()
@@ -185,7 +185,7 @@ const Demo = () => {
 				name: '完成率',
 				type: 'line',
 				yAxisIndex: 1,
-				data: [100, 33, 100, 100, 100, 100],
+				data: [10, 3, 10, 10, 10, 10],
 				itemStyle: {
 					normal: {
 						color: '#ffaa00',
@@ -196,7 +196,7 @@ const Demo = () => {
 		],
 	}
 
-	useEchartsTool(
+	useInjection(
 		{
 			chart: chart,
 			option,
@@ -205,10 +205,10 @@ const Demo = () => {
 		},
 		[]
 	)
+
 	useEffect(() => {
 		if (chart.current) {
 			chart.current?.setOption(option)
-			// event.emit('demo', option)
 		}
 	}, [])
 
