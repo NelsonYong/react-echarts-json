@@ -11,20 +11,20 @@ import {
 import type { DrawerProps } from 'antd'
 import type { EChartsOption, EChartsType } from 'echarts'
 
-import useEchartsTool from '@/packages/hooks/useInjection'
-import useChartEventEmitter from '@/packages/hooks/useChartEventEmitter'
-import useDarkMode from '@/packages/hooks/useDarkMode'
+import useEchartsTool from '../../hooks/useInjection'
+import useChartEventEmitter from '../../hooks/useChartEventEmitter'
+import useDarkMode from '../../hooks/useDarkMode'
 
 import ReactEchartsJson from '../ReactEchartsJson'
 
-import type { ControlType } from '@/packages/hooks/useInjection/charts'
+import type { ControlType } from '../../hooks/useInjection/charts'
 
 import styles from './index.module.less'
 import { light, dark } from './style'
 
 import SunIcon from './icons/SunIcon'
 import DarkIcon from './icons/DarkIcon'
-import { LogView } from '@/packages'
+import LogView from '../LogView'
 
 const { TabPane } = Tabs
 

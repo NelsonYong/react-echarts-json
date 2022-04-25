@@ -1,15 +1,15 @@
 import { useBoolean } from 'ahooks'
+import { useMemo } from 'react'
 import { Col, Row, Switch } from 'antd'
 import ReactJson from 'react-json-view'
 import { EChartsOption } from 'echarts/types/dist/echarts'
 
 import type { InteractionProps } from 'react-json-view'
 
-import useEventEmitter from '@/packages/hooks/useChartEventEmitter'
-import useEchartsTool from '@/packages/hooks/useInjection'
-import { ControlType } from '@/packages/hooks/useInjection/charts'
-import { useMemo } from 'react'
-import useLogs from '@/packages/hooks/useLogs'
+import useEventEmitter from '../../hooks/useChartEventEmitter'
+import useEchartsTool from '../../hooks/useInjection'
+import { ControlType } from '../../hooks/useInjection/charts'
+import useLogs from '../../hooks/useLogs'
 
 const OptionView = ({
 	id,

@@ -1,8 +1,8 @@
 import ReactJson from 'react-json-view'
-import useChartEventEmitter from '@/packages/hooks/useChartEventEmitter'
-import useLogs from '@/packages/hooks/useLogs'
+import useChartEventEmitter from '../../hooks/useChartEventEmitter'
+import useLogs from '../../hooks/useLogs'
 import { useEffect, useMemo, useState } from 'react'
-import { LogType } from '@/packages/hooks/useLogs/log'
+import { LogType } from '../../hooks/useLogs/log'
 
 import { dark, light } from '../EchartDefaultView/style'
 import { Col, Divider, Row } from 'antd'

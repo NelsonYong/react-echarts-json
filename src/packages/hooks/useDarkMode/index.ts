@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from 'react'
+import { useEffect } from 'react'
 
 import { useLocalStorageState } from 'ahooks'
 import useMedia from '../useMedia'
