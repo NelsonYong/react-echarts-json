@@ -1,4 +1,4 @@
-import { useMemo, useRef, useState } from 'react'
+import { useEffect, useMemo, useRef, useState } from 'react'
 import { Space, Button, Drawer, Radio, Row, Divider, Tabs, Switch } from 'antd'
 import {
 	CloseOutlined,
@@ -11,7 +11,7 @@ import {
 import type { DrawerProps } from 'antd'
 import type { EChartsOption, EChartsType } from 'echarts'
 
-import useEchartsTool from '../../hooks/useInjection'
+import useInjection from '../../hooks/useInjection'
 import useChartEventEmitter from '../../hooks/useChartEventEmitter'
 import useDarkMode from '../../hooks/useDarkMode'
 
@@ -25,6 +25,7 @@ import { light, dark } from './style'
 import SunIcon from './icons/SunIcon'
 import DarkIcon from './icons/DarkIcon'
 import LogView from '../LogView'
+import useChartSelect from '@/packages/hooks/useChartSelect'
 
 const { TabPane } = Tabs
 
@@ -32,7 +33,9 @@ const EchartDefaultView = () => {
 	const event = useChartEventEmitter({ global: true })
 	const currentIndex = useRef(0)
 
-	const { tool } = useEchartsTool({})
+	const { tool } = useInjection({})
+
+	const { runSelect } = useChartSelect({})
 
 	const [visible, setVisible] = useState(false)
 	const [placement, setPlacement] = useState<DrawerProps['placement']>('right')
@@ -41,7 +44,7 @@ const EchartDefaultView = () => {
 			id?: string
 			option?: EChartsOption
 			chart?: EChartsType
-			title?: string
+			name?: string
 		}[]
 	>([])
 	const [currentChart, setCurrentChart] = useState<ControlType>()
@@ -75,6 +78,13 @@ const EchartDefaultView = () => {
 	const onClose = () => {
 		setVisible(false)
 	}
+
+	useEffect(() => {
+		if (currentChart?.id)
+			runSelect({
+				id: currentChart?.id,
+			})
+	}, [currentChart])
 
 	return (
 		<div className={styles.container}>
@@ -163,7 +173,7 @@ const EchartDefaultView = () => {
 										value={item.id}
 										key={item.id}
 									>
-										{item.title}（{item.id}）
+										{item.name}（{item.id}）
 									</Radio>
 								))}
 							</Radio.Group>
@@ -183,7 +193,7 @@ const EchartDefaultView = () => {
 								tab={<span style={{ fontSize: 16 }}>日志视图</span>}
 								key="log"
 							>
-								<LogView darkMode={darkMode} />
+								<LogView darkMode={darkMode} id={currentChart?.id} />
 							</TabPane>
 						</Tabs>
 					</Drawer>

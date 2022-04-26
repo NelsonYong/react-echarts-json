@@ -3,6 +3,7 @@ import useMedia from './hooks/useMedia'
 import useDarkMode from './hooks/useDarkMode'
 import useInjection from './hooks/useInjection'
 import useChartEventEmitter from './hooks/useChartEventEmitter'
+import useChartSelect from './hooks/useChartSelect'
 
 import EchartDefaultView from './components/EchartDefaultView'
 import LogView from './components/LogView'
@@ -13,6 +14,7 @@ export {
 	useDarkMode,
 	useEcharts,
 	useInjection,
+	useChartSelect,
 	useChartEventEmitter,
 	EchartDefaultView,
 	LogView,

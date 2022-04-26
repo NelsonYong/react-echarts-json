@@ -20,7 +20,7 @@ export declare class Logs {
     private logs;
     updata(params: Pick<Log, 'id' | 'name'> & ControllableUpdate & Record<string, any>): void;
     depsUpdata(params: Pick<Log, 'id' | 'name'> & UncontrollableDepsUpdata): void;
-    getList(): LogType[];
+    getList(id?: string): LogType[];
 }
 declare const LogsInstance: Logs;
 export default LogsInstance;

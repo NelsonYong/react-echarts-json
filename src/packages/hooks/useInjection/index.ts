@@ -14,13 +14,13 @@ import useChartEventEmitter from '../useChartEventEmitter'
 const useInjection = (
 	{
 		id,
-		title,
+		name,
 		chart,
 		option,
 		container,
 	}: {
 		id?: string
-		title?: string
+		name?: string
 		option?: EChartsOption
 		chart?: React.MutableRefObject<EChartsType | undefined>
 		container?: React.RefObject<HTMLDivElement>
@@ -41,13 +41,13 @@ const useInjection = (
 				id,
 				chart: chart?.current,
 				option,
-				title,
+				name,
 				container: container?.current,
 			})
 			logs.depsUpdata({
 				id,
-				name: title,
-				namespace: [`${id}'s- deps update`],
+				name,
+				namespace: [`deps-update`],
 				currentValue: currentValue.current,
 				previewValue: previewValue.current,
 			})

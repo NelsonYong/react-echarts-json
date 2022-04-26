@@ -218,7 +218,7 @@ const Demo = () => {
 			chart: chart,
 			option,
 			id: 'demo1',
-			title: '测试demo1',
+			name: '测试demo1',
 		},
 		[option]
 	)

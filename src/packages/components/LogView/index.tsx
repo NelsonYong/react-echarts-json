@@ -17,7 +17,7 @@ const colors = [
 	'#5C1CF0',
 ]
 
-const LogView = ({ darkMode }: { darkMode?: boolean }) => {
+const LogView = ({ id, darkMode }: { darkMode?: boolean; id?: string }) => {
 	const event = useChartEventEmitter({ global: true })
 	const logs = useLogs()
 
@@ -28,12 +28,13 @@ const LogView = ({ darkMode }: { darkMode?: boolean }) => {
 	}, [darkMode])
 
 	event.useSubscription('list', () => {
-		setLogList(logs.getList())
+		setLogList(logs.getList(id))
 	})
 
 	useEffect(() => {
-		setLogList(logs.getList())
-	}, [])
+		setLogList(logs.getList(id))
+	}, [id])
+
 	return (
 		<div
 			style={{

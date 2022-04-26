@@ -200,7 +200,8 @@ const Demo = () => {
 			chart: chart,
 			option,
 			id: 'demo',
-			title: '测试demo',
+			name: '测试demo',
+			container: salesDemoContainer,
 		},
 		[]
 	)

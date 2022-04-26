@@ -37,7 +37,8 @@ export class Logs {
 		})
 	}
 
-	getList() {
+	getList(id?: string) {
+		if (id) return Array.from(this.logs)?.filter((i) => i.id === id)
 		return Array.from(this.logs)
 	}
 }

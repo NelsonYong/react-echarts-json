@@ -8,7 +8,7 @@ export type ControlType = {
 	id?: string
 	chart?: EChartsType
 	option?: EChartsOption
-	title?: string
+	name?: string
 	container?: HTMLDivElement | null
 }
 
@@ -17,20 +17,20 @@ export class Charts {
 		string,
 		{
 			chart: EChartsType
-			option: EChartsOption
-			title?: string
+			option: EChartsOption & Record<string, any>
+			name?: string
 			container?: HTMLDivElement | null
 		}
 	>()
 
-	add = ({ id, chart, option, title, container }: ControlType) => {
+	add = ({ id, chart, option, name, container }: ControlType) => {
 		if (chart && option && id) {
 			// 添加图表
 			this.chartsEmitters.set(id, {
 				chart,
 				container,
 				option,
-				title,
+				name,
 			})
 		} else {
 			console.log('添加失败')
@@ -47,6 +47,24 @@ export class Charts {
 
 	delete = (id: string) => {
 		this.chartsEmitters.delete(id)
+	}
+
+	select = ({
+		id,
+		normal = 'transparent',
+		active = 'rgba(37,168,246,.15)',
+	}: {
+		id: string
+		normal?: string
+		active?: string
+	}) => {
+		if (id) {
+			for (const key of this.chartsEmitters.keys()) {
+				this.chartsEmitters.get(key)?.chart.setOption?.({
+					backgroundColor: id === key ? active : normal,
+				})
+			}
+		}
 	}
 
 	list = () => {

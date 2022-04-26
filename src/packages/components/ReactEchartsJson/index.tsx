@@ -13,7 +13,7 @@ import useLogs from '../../hooks/useLogs'
 
 const OptionView = ({
 	id,
-	title,
+	name,
 	chart,
 	option,
 	darkMode,
@@ -34,13 +34,13 @@ const OptionView = ({
 			chart?.setOption(updated_src as EChartsOption)
 			tool?.add({
 				id: id,
+				name,
 				chart,
 				option: updated_src as EChartsOption,
-				title,
 			})
 			logs.updata({
 				id,
-				name: title,
+				name,
 				namespace: namespace,
 				currentValue: updated_src,
 				previewValue: existing_src,
