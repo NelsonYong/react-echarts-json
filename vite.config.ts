@@ -35,7 +35,7 @@ export default defineConfig({
 			},
 		},
 	},
-	base: '/react-echarts-json/page',
+	base: '/react-echarts-json/docs',
 	build: {
 		// lib: {
 		// 	entry: resolve(__dirname, 'src/packages/index.tsx'),
@@ -53,6 +53,6 @@ export default defineConfig({
 				},
 			},
 		},
-		outDir: 'page',
+		outDir: 'docs',
 	},
 })
