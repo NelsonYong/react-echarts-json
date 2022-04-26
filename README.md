@@ -46,3 +46,9 @@ useInjection(
 	[deps]
 )
 ```
+
+## 🖼 View
+
+<img src="https://github.com/NelsonYong/react-echarts-json/blob/master/src/image/log.png?raw=true" alt="darl" style="zoom: 33%;" />
+
+<img src="https://github.com/NelsonYong/react-echarts-json/blob/master/src/image/opt.png?raw=true" alt="log" style="zoom:33%;" />
