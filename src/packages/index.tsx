@@ -1,4 +1,4 @@
-import useEcharts from '../hooks/useEcharts'
+import useEcharts from './hooks/useEcharts'
 import useMedia from './hooks/useMedia'
 import useDarkMode from './hooks/useDarkMode'
 import useInjection from './hooks/useInjection'

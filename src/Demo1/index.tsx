@@ -1,7 +1,5 @@
-// import { useEchartsTool } from "@/components";
-import useEcharts from '@/hooks/useEcharts'
 import { useEffect, useMemo, useState } from 'react'
-import { useInjection } from '../packages'
+import { useInjection, useEcharts } from '../packages'
 
 const getNumber = async (): Promise<number[]> => {
 	return new Promise((resolve) => {

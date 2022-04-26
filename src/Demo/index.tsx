@@ -1,6 +1,5 @@
-import useEcharts from '@/hooks/useEcharts'
 import { useEffect } from 'react'
-import { useInjection } from '../packages'
+import { useInjection, useEcharts } from '../packages'
 
 const Demo = () => {
 	const { container: salesDemoContainer, chart } = useEcharts()
