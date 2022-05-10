@@ -54,6 +54,6 @@ export default defineConfig({
 				},
 			},
 		},
-		outDir: 'docs',
+		outDir: 'dist',
 	},
 })
