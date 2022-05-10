@@ -26,6 +26,7 @@ import SunIcon from './icons/SunIcon'
 import DarkIcon from './icons/DarkIcon'
 import LogView from '../LogView'
 import useChartSelect from '@/packages/hooks/useChartSelect'
+import Editor from '../Editor'
 
 const { TabPane } = Tabs
 
@@ -184,10 +185,16 @@ const EchartDefaultView = () => {
 							className={darkMode ? styles['tab-dark'] : ''}
 						>
 							<TabPane
-								tab={<span style={{ fontSize: 16 }}>配置项视图</span>}
+								tab={<span style={{ fontSize: 16 }}>配置项编辑</span>}
 								key="view"
 							>
 								<ReactEchartsJson {...currentChart} darkMode={darkMode} />
+							</TabPane>
+							<TabPane
+								tab={<span style={{ fontSize: 16 }}>代码编辑</span>}
+								key="editor"
+							>
+								<Editor activeId={currentChart?.id} />
 							</TabPane>
 							<TabPane
 								tab={<span style={{ fontSize: 16 }}>日志视图</span>}
