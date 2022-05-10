@@ -1,13 +1,9 @@
-import { EchartDefaultView } from './packages'
-import Demo from './Demo'
-import Demo1 from './Demo1'
+import Contain from './example/Contain'
 
 const App = () => {
 	return (
 		<div>
-			<Demo />
-			<Demo1 />
-			<EchartDefaultView />
+			<Contain />
 		</div>
 	)
 }

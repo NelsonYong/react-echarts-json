@@ -1,11 +1,8 @@
 import { useEffect, useMemo, useState } from 'react'
-import { useInjection, useEcharts } from '../packages'
+import { useInjection, useEcharts } from '../../packages'
 
 type r = 1 | '0'
 type p = string
-type k = Exclude<r, p>
-
-type T = Exclude<1 | 2 | 4 | 5, 1 | 3 | 6>
 
 const getNumber = async (): Promise<number[]> => {
 	return new Promise((resolve) => {
