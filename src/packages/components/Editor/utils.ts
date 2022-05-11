@@ -22,17 +22,17 @@ export function useCreateEditor({
 	const { tool } = useInjection({})
 	const event = useChartEventEmitter({ global: true })
 
-	function render(
+	const render = (
 		node: React.DOMElement<React.DOMAttributes<Element>, Element>
-	) {
+	) => {
 		if (domElement) ReactDOM.render(node, domElement)
 	}
-	function require(moduleName: any) {
+	const require = (moduleName: any) => {
 		return moduleResolver(moduleName)
 	}
 
 	// 核心
-	function getWrapperFunction(code: string) {
+	const getWrapperFunction = (code: string) => {
 		try {
 			const esCode = babelTransform(code, { presets: ['es2015', 'react'] }).code
 			const ast = parse(esCode, {
@@ -89,3 +89,10 @@ export function useCreateEditor({
 		getCompiledCode,
 	}
 }
+
+export const isString = (val: unknown): val is string => typeof val === 'string'
+
+export const isArray = Array.isArray
+
+export const isObject = (val: unknown): val is Record<any, any> =>
+	val !== null && typeof val === 'object'

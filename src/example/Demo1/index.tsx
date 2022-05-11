@@ -140,29 +140,27 @@ const Demo = () => {
 					data: state ?? [],
 					barWidth: 'auto',
 					itemStyle: {
-						normal: {
-							color: {
-								type: 'linear',
-								x: 0,
-								y: 0,
-								x2: 0,
-								y2: 1,
-								colorStops: [
-									{
-										offset: 0,
-										color: 'rgba(255,37,117,0.7)',
-									},
-									{
-										offset: 0.5,
-										color: 'rgba(0,133,245,0.7)',
-									},
-									{
-										offset: 1,
-										color: 'rgba(0,133,245,0.3)',
-									},
-								],
-								globalCoord: false,
-							},
+						color: {
+							type: 'linear',
+							x: 0,
+							y: 0,
+							x2: 0,
+							y2: 1,
+							colorStops: [
+								{
+									offset: 0,
+									color: 'rgba(255,37,117,0.7)',
+								},
+								{
+									offset: 0.5,
+									color: 'rgba(0,133,245,0.7)',
+								},
+								{
+									offset: 1,
+									color: 'rgba(0,133,245,0.3)',
+								},
+							],
+							globalCoord: false,
 						},
 					},
 				},
@@ -172,29 +170,27 @@ const Demo = () => {
 					data: [4, 2, 36, 6, 8, 6],
 					barWidth: 'auto',
 					itemStyle: {
-						normal: {
-							color: {
-								type: 'linear',
-								x: 0,
-								y: 0,
-								x2: 0,
-								y2: 1,
-								colorStops: [
-									{
-										offset: 0,
-										color: 'rgba(255,37,117,0.7)',
-									},
-									{
-										offset: 0.5,
-										color: 'rgba(0,255,252,0.7)',
-									},
-									{
-										offset: 1,
-										color: 'rgba(0,255,252,0.3)',
-									},
-								],
-								globalCoord: false,
-							},
+						color: {
+							type: 'linear',
+							x: 0,
+							y: 0,
+							x2: 0,
+							y2: 1,
+							colorStops: [
+								{
+									offset: 0,
+									color: 'rgba(255,37,117,0.7)',
+								},
+								{
+									offset: 0.5,
+									color: 'rgba(0,255,252,0.7)',
+								},
+								{
+									offset: 1,
+									color: 'rgba(0,255,252,0.3)',
+								},
+							],
+							globalCoord: false,
 						},
 					},
 					barGap: '0',
@@ -205,9 +201,7 @@ const Demo = () => {
 					yAxisIndex: 1,
 					data: [100, 33, 100, 100, 100, 100],
 					itemStyle: {
-						normal: {
-							color: '#ffaa00',
-						},
+						color: '#ffaa00',
 					},
 					smooth: true,
 				},

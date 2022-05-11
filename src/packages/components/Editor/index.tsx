@@ -1,29 +1,51 @@
+import { useEffect, useRef, useState } from 'react'
 import { Button, Col, Row } from 'antd'
-import * as monaco from 'monaco-editor'
-import { useEffect, useRef } from 'react'
+import loader from '@monaco-editor/loader'
+import type { editor as MEditor } from 'monaco-editor'
+
 import { useCreateEditor } from './utils'
+import {
+	Monaco,
+	registerApiCompletion,
+	registerDatavDarkTheme,
+} from './editor-config'
+
+loader.config({
+	paths: { vs: 'https://unpkg.com/monaco-editor@0.27.0/min/vs' },
+})
 
 const Editor = ({ activeId }: { activeId?: string }) => {
 	const mainRef = useRef<HTMLDivElement>(null)
 	const container = useRef<HTMLDivElement>(null)
-	const editor = useRef<monaco.editor.IStandaloneCodeEditor>()
+	const [monaco, setMonaco] = useState<Monaco | null>()
+	const editor = useRef<MEditor.IStandaloneCodeEditor>()
+
 	useEffect(() => {
-		if (container.current)
-			editor.current = monaco.editor.create(container.current, {
-				value: 'const chartInstance = instance',
-				language: 'javascript',
-				theme: 'vs-dark',
-				roundedSelection: true,
-				scrollBeyondLastLine: true,
-				tabSize: 2, // tab缩进长度
-				autoIndent: 'full', // 自动布局
-				cursorStyle: 'line', // 光标样式
-				automaticLayout: true, // 自动布局
-				fontSize: 14, // 字体大小
-			})
+		const loadMonco = async () => {
+			const data = await loader.init()
+			setMonaco(data)
+		}
+		loadMonco()
 	}, [])
 
-	// monaco.editor.defineTheme()
+	useEffect(() => {
+		if (monaco) {
+			registerDatavDarkTheme(monaco)
+			registerApiCompletion(monaco, 'javascript', ['react-echarts-json-monaco'])
+
+			const option = {
+				value: 'const chartInstance = instance',
+				language: 'javascript',
+				theme: 'react-echarts-json-dark-theme',
+				tabSize: 2, // tab缩进长度
+				cursorStyle: 'line', // 光标样式
+				fontSize: 14, // 字体大小
+			} as const
+
+			if (container.current)
+				editor.current = monaco.editor.create(container.current, option)
+		}
+	}, [monaco])
 
 	const { run } = useCreateEditor({
 		domElement: mainRef.current,

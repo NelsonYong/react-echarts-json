@@ -10,9 +10,9 @@ const DarkSvg = () => (
 		viewBox="0 1 24 26"
 		fill="none"
 		stroke="currentColor"
-		stroke-width="0"
-		stroke-linecap="round"
-		stroke-linejoin="round"
+		strokeWidth="0"
+		strokeLinecap="round"
+		strokeLinejoin="round"
 		style={{ transform: 'rotate(40deg)' }}
 	>
 		<mask id="mask">
