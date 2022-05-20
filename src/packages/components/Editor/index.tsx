@@ -34,7 +34,14 @@ const Editor = ({ activeId }: { activeId?: string }) => {
 			registerApiCompletion(monaco, 'javascript', ['react-echarts-json-monaco'])
 
 			const option = {
-				value: 'const chartInstance = instance',
+				value: `/* chartInstance => object 
+* chart: echartInstance
+* option:chartOption
+* container:renderDom
+* id:chartId
+* name:chartName
+*/
+const chartInstance = instance`,
 				language: 'javascript',
 				theme: 'react-echarts-json-dark-theme',
 				tabSize: 2, // tab缩进长度
