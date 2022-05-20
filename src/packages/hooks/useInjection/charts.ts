@@ -33,7 +33,7 @@ export class Charts {
 				name,
 			})
 		} else {
-			console.log('添加失败')
+			console.error('add error')
 		}
 	}
 
