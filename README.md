@@ -30,6 +30,7 @@ Use the container that displays the view
 
 ```typescript
 import { EchartDefaultView } from 'react-echarts-json'
+import 'react-echarts-json/dist/style.css'
 
 // view
 ;<EchartDefaultView />
