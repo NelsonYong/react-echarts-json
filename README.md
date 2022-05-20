@@ -36,7 +36,7 @@ import 'react-echarts-json/dist/style.css'
 ;<EchartDefaultView />
 ```
 
-You need to inject the message of the echart(jsx or tsx)
+You need to inject messages in the components using echarts(jsx or tsx)
 
 ```typescript
 import { useInjection } from 'react-echarts-json'
