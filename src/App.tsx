@@ -1,3 +1,4 @@
+import { number } from 'echarts'
 import Contain from './example/Contain'
 
 const App = () => {

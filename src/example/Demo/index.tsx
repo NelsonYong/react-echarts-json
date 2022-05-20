@@ -1,3 +1,4 @@
+import { number } from 'echarts'
 import { useEffect } from 'react'
 import { useInjection, useEcharts } from '../../packages'
 
