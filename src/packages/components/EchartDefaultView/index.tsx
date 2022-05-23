@@ -125,7 +125,7 @@ const EchartDefaultView = () => {
 					</div>
 
 					<Drawer
-						title="图表配置"
+						title="Chart View"
 						className={darkMode ? styles['drawer-dark'] : ''}
 						placement={placement}
 						width={700}
@@ -185,19 +185,34 @@ const EchartDefaultView = () => {
 							className={darkMode ? styles['tab-dark'] : ''}
 						>
 							<TabPane
-								tab={<span style={{ fontSize: 16 }}>配置项编辑</span>}
+								tab={
+									<span style={{ fontSize: 16 }}>
+										<span>⚙️</span>
+										<span style={{ marginLeft: 8 }}>Option</span>
+									</span>
+								}
 								key="view"
 							>
 								<ReactEchartsJson {...currentChart} darkMode={darkMode} />
 							</TabPane>
 							<TabPane
-								tab={<span style={{ fontSize: 16 }}>代码编辑</span>}
+								tab={
+									<span style={{ fontSize: 16 }}>
+										<span>✍︎</span>
+										<span style={{ marginLeft: 8 }}>Code</span>
+									</span>
+								}
 								key="editor"
 							>
 								<Editor activeId={currentChart?.id} />
 							</TabPane>
 							<TabPane
-								tab={<span style={{ fontSize: 16 }}>日志视图</span>}
+								tab={
+									<span style={{ fontSize: 16 }}>
+										<span>📄</span>
+										<span style={{ marginLeft: 8 }}>Log</span>
+									</span>
+								}
 								key="log"
 							>
 								<LogView darkMode={darkMode} id={currentChart?.id} />

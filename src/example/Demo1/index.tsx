@@ -43,21 +43,21 @@ const Demo = () => {
 			legend: {
 				data: [
 					{
-						name: '待处理',
+						name: 'undone',
 						icon: 'circle',
 						textStyle: {
 							color: '#7d838b',
 						},
 					},
 					{
-						name: '已处理',
+						name: 'resolved',
 						icon: 'circle',
 						textStyle: {
 							color: '#7d838b',
 						},
 					},
 					{
-						name: '完成率',
+						name: 'complate',
 						icon: 'circle',
 						textStyle: {
 							color: '#7d838b',
@@ -87,7 +87,7 @@ const Demo = () => {
 			yAxis: [
 				{
 					type: 'value',
-					name: '数值1',
+					name: 'number1',
 					nameTextStyle: {
 						color: '#7d838b',
 					},
@@ -113,7 +113,7 @@ const Demo = () => {
 				},
 				{
 					type: 'value',
-					name: '数值2',
+					name: 'number2',
 					show: true,
 					axisTick: {
 						show: false,
@@ -131,11 +131,11 @@ const Demo = () => {
 				top: '15%',
 				bottom: 32,
 				left: '15%',
-				right: '5%',
+				right: '15%',
 			},
 			series: [
 				{
-					name: '待处理',
+					name: 'undone',
 					type: 'bar',
 					data: state ?? [],
 					barWidth: 'auto',
@@ -165,7 +165,7 @@ const Demo = () => {
 					},
 				},
 				{
-					name: '已处理',
+					name: 'resolved',
 					type: 'bar',
 					data: [4, 2, 36, 6, 8, 6],
 					barWidth: 'auto',
@@ -196,7 +196,7 @@ const Demo = () => {
 					barGap: '0',
 				},
 				{
-					name: '完成率',
+					name: 'complate',
 					type: 'line',
 					yAxisIndex: 1,
 					data: [100, 33, 100, 100, 100, 100],
@@ -215,7 +215,7 @@ const Demo = () => {
 			chart: chart,
 			option,
 			id: 'demo1',
-			name: '测试demo1',
+			name: 'demo1',
 		},
 		[option]
 	)
