@@ -3,6 +3,7 @@ import { Space, Button, Drawer, Radio, Row, Divider, Tabs, Switch } from 'antd'
 import {
 	CloseOutlined,
 	DownOutlined,
+	GithubOutlined,
 	LeftOutlined,
 	RightOutlined,
 	UpOutlined,
@@ -14,8 +15,10 @@ import type { EChartsOption, EChartsType } from 'echarts'
 import useInjection from '../../hooks/useInjection'
 import useChartEventEmitter from '../../hooks/useChartEventEmitter'
 import useDarkMode from '../../hooks/useDarkMode'
+import useChartSelect from '../../hooks/useChartSelect'
 
 import ReactEchartsJson from '../ReactEchartsJson'
+import Editor from '../Editor'
 
 import type { ControlType } from '../../hooks/useInjection/charts'
 
@@ -25,19 +28,16 @@ import { light, dark } from './style'
 import SunIcon from './icons/SunIcon'
 import DarkIcon from './icons/DarkIcon'
 import LogView from '../LogView'
-import useChartSelect from '@/packages/hooks/useChartSelect'
-import Editor from '../Editor'
 
 const { TabPane } = Tabs
 
-const EchartDefaultView = () => {
+const EchartDefaultView = ({ github = false }: { github?: boolean }) => {
 	const event = useChartEventEmitter({ global: true })
-	const currentIndex = useRef(0)
-
 	const { tool } = useInjection({})
-
 	const { runSelect } = useChartSelect({})
+	const [darkMode, setDarkMode] = useDarkMode()
 
+	const currentIndex = useRef(0)
 	const [visible, setVisible] = useState(false)
 	const [placement, setPlacement] = useState<DrawerProps['placement']>('right')
 	const [chartList, setChartList] = useState<
@@ -49,8 +49,6 @@ const EchartDefaultView = () => {
 		}[]
 	>([])
 	const [currentChart, setCurrentChart] = useState<ControlType>()
-
-	const [darkMode, setDarkMode] = useDarkMode()
 
 	const styleMode = useMemo(() => {
 		return darkMode ? dark : light
@@ -141,7 +139,32 @@ const EchartDefaultView = () => {
 						}}
 						footerStyle={styleMode.drawerStyle}
 						extra={
-							<Space>
+							<Space size={16}>
+								{github && (
+									<span>
+										<GithubOutlined
+											style={{
+												fontSize: 24,
+											}}
+											onClick={() => {
+												window.open(
+													'https://github.com/NelsonYong/react-echarts-json',
+													'react-echarts-json'
+												)
+											}}
+										/>
+										<span
+											style={{
+												fontSize: 16,
+												marginLeft: 6,
+												fontWeight: 600,
+											}}
+										>
+											star
+										</span>
+									</span>
+								)}
+
 								<Switch
 									checkedChildren={<DarkIcon />}
 									unCheckedChildren={<SunIcon />}
@@ -150,9 +173,6 @@ const EchartDefaultView = () => {
 										setDarkMode(e)
 									}}
 								/>
-								{/* <Button type="primary" onClick={onClose}>
-									数据源
-								</Button> */}
 								<Button
 									size="small"
 									shape="circle"

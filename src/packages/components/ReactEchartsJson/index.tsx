@@ -31,6 +31,8 @@ const OptionView = ({
 				existing_value,
 				new_value,
 			} = ctrl
+
+			chart?.clear()
 			chart?.setOption(updated_src as EChartsOption)
 			tool?.add({
 				id: id,
@@ -73,8 +75,8 @@ const OptionView = ({
 			<Row>
 				<Col>
 					<Switch
-						checkedChildren="展开配置"
-						unCheckedChildren="折叠配置"
+						checkedChildren="Expand"
+						unCheckedChildren="Collapsed"
 						defaultChecked={false}
 						onChange={(e: boolean) => {
 							toggleCollapsed(!e)
