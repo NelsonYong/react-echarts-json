@@ -46,7 +46,7 @@ useInjection(
 		chart: chart,
 		option,
 		id: 'demo',
-		name: '测试demo',
+		name: 'demo',
 		container: null, // partial
 	},
 	[deps] // dependent

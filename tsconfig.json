@@ -20,7 +20,7 @@
 			"@/*": ["src/*"]
 		}
 	},
-	"include": ["src"],
+	"include": ["src", ".vitepress/**/*"],
 	"exclude": ["node_modules", "dist"],
 	"references": [{ "path": "./tsconfig.node.json" }]
 }

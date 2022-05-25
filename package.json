@@ -20,7 +20,10 @@
 		"build:types": "node scripts/build-types.js",
 		"start": " vite --mode development",
 		"deply": "chmod +x ./deply.sh  && ./deply.sh",
-		"preview": "vite preview"
+		"preview": "vite preview",
+		"docs:dev": "vitepress dev docs",
+		"docs:build": "vitepress build docs",
+		"docs:serve": "vitepress serve docs"
 	},
 	"dependencies": {
 		"@ant-design/icons": "^4.7.0",
@@ -45,6 +48,8 @@
 		"@types/react-dom": "^17.0.10",
 		"@vitejs/plugin-react": "^1.0.7",
 		"@vitejs/plugin-react-refresh": "^1.3.6",
+		"@vue/theme": "^1.0.2",
+		"config": "link:@vue/theme/config",
 		"consola": "^2.15.3",
 		"echarts": "^5.3.0",
 		"less": "^4.1.2",
@@ -55,7 +60,8 @@
 		"vite": "^2.8.0",
 		"vite-plugin-dts": "^0.9.9",
 		"vite-plugin-imp": "^2.1.6",
-		"vite-plugin-style-import": "^2.0.0"
+		"vite-plugin-style-import": "^2.0.0",
+		"vitepress": "^0.22.4"
 	},
 	"repository": "https://github.com/NelsonYong/react-echarts-json"
 }
