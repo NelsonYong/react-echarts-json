@@ -23,7 +23,12 @@
 		"preview": "vite preview",
 		"docs:dev": "vitepress dev docs",
 		"docs:build": "vitepress build docs",
-		"docs:serve": "vitepress serve docs"
+		"docs:serve": "vitepress serve docs",
+		"lint": "tsc && eslint . --ext '.js,.jsx,.ts,.tsx'",
+		"prepare": "husky install"
+	},
+	"lint-staged": {
+		"*.{js,ts,tsx,jsx,vue}": "npm run lint"
 	},
 	"dependencies": {
 		"@ant-design/icons": "^4.7.0",
@@ -52,6 +57,7 @@
 		"config": "link:@vue/theme/config",
 		"consola": "^2.15.3",
 		"echarts": "^5.3.0",
+		"husky": "^8.0.1",
 		"less": "^4.1.2",
 		"react": "^17.0.2",
 		"react-dom": "^17.0.2",
