@@ -15,7 +15,7 @@ loader.config({
 })
 
 const Editor = ({ activeId }: { activeId?: string }) => {
-	const mainRef = useRef<HTMLDivElement>(null)
+	// const mainRef = useRef<HTMLDivElement>(null)
 	const container = useRef<HTMLDivElement>(null)
 	const [monaco, setMonaco] = useState<Monaco | null>()
 	const editor = useRef<MEditor.IStandaloneCodeEditor>()
@@ -41,7 +41,13 @@ const Editor = ({ activeId }: { activeId?: string }) => {
 * id:chartId
 * name:chartName
 */
-const chartInstance = instance`,
+const chartInstance = instance
+const { useEffect } = React
+
+useEffect(() => {
+		console.log('我被创建了')
+}, [])
+`,
 				language: 'javascript',
 				theme: 'react-echarts-json-dark-theme',
 				tabSize: 2, // tab缩进长度
@@ -55,7 +61,7 @@ const chartInstance = instance`,
 	}, [monaco])
 
 	const { run } = useCreateEditor({
-		domElement: mainRef.current,
+		// domElement: mainRef.current,
 		activeId,
 	})
 
@@ -65,7 +71,7 @@ const chartInstance = instance`,
 	}
 
 	return (
-		<div ref={mainRef}>
+		<div>
 			<Row>
 				<Col span={20}></Col>
 				<Col
@@ -87,6 +93,7 @@ const chartInstance = instance`,
 					marginTop: 32,
 				}}
 			></div>
+			<div id="node"></div>
 		</div>
 	)
 }

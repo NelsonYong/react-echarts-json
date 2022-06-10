@@ -8,11 +8,9 @@ import useChartEventEmitter from '../../hooks/useChartEventEmitter'
 
 // 动态创建方法
 export function useCreateEditor({
-	domElement,
 	activeId,
 	moduleResolver = (moduleName?: any) => null,
 }: {
-	domElement: HTMLDivElement | null
 	activeId?: string
 	moduleResolver?: (moduleName?: any) => null
 }) {
@@ -22,24 +20,33 @@ export function useCreateEditor({
 	const { tool } = useInjection({})
 	const event = useChartEventEmitter({ global: true })
 
-	const render = (
-		node: React.DOMElement<React.DOMAttributes<Element>, Element>
-	) => {
-		if (domElement) ReactDOM.render(node, domElement)
-	}
 	const require = (moduleName: any) => {
 		return moduleResolver(moduleName)
+	}
+
+	const render = (
+		Component: React.DOMElement<React.DOMAttributes<Element>, Element>
+	) => {
+		ReactDOM.render(Component, document.getElementById('node'))
 	}
 
 	// 核心
 	const getWrapperFunction = (code: string) => {
 		try {
-			const esCode = babelTransform(code, { presets: ['es2015', 'react'] }).code
+			const esCode = babelTransform(
+				`
+const App = ()=>{
+  ${code}
+  return <div></div>
+}
+render(<App />)`,
+				{ presets: ['es2015', 'react'] }
+			).code
+
 			const ast = parse(esCode, {
 				sourceType: 'module',
 				ecmaVersion: 3,
 			})
-
 			return new Function(
 				'React',
 				'render',
