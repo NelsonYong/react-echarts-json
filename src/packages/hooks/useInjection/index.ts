@@ -54,7 +54,7 @@ const useInjection = (
 			previewValue.current = currentValue.current
 			event.emit('list')
 		}
-	}, deps ?? [])
+	}, [...(deps ?? [])])
 	return { tool: ref }
 }
 
