@@ -90,7 +90,7 @@ import {
 // # Can you use hook and component to customize the components you want.The EchartDefaultView component is made up of them.
 ```
 
-## 🖼 View
+## 🏜 View
 
 <img src="https://github.com/NelsonYong/react-echarts-json/blob/master/src/image/log.png?raw=true" alt="darl" style="zoom: 33%;" />
 
