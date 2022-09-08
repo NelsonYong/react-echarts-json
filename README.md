@@ -4,7 +4,7 @@ No-invasive debugging based on Echarts
 
 ## 💻 Live
 
-[Live](http://43.138.187.142:9000/react-echarts-json/live/)
+[Docs Live](http://43.138.187.142:9000/react-echarts-json/live/)
 
 ## ✨ Features
 
