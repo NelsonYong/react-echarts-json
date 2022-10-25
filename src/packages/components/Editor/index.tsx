@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import { Button, Col, Row } from 'antd'
 import loader from '@monaco-editor/loader'
 import type { editor as MEditor } from 'monaco-editor'
@@ -14,7 +14,7 @@ loader.config({
 	paths: { vs: 'https://unpkg.com/monaco-editor@0.27.0/min/vs' },
 })
 
-const Editor = ({ activeId }: { activeId?: string }) => {
+const Editor: React.FC<{ activeId?: string }> = ({ activeId }) => {
 	// const mainRef = useRef<HTMLDivElement>(null)
 	const container = useRef<HTMLDivElement>(null)
 	const [monaco, setMonaco] = useState<Monaco | null>()

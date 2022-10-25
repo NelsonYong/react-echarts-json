@@ -1,4 +1,4 @@
-import { EchartDefaultView } from '../packages'
+import { ViewContainer } from '../packages'
 import Demo from './/Demo'
 import Demo1 from './Demo1'
 
@@ -34,7 +34,7 @@ const Contain = () => {
 				</div>
 			</div>
 
-			<EchartDefaultView />
+			<ViewContainer renderable={true}></ViewContainer>
 		</div>
 	)
 }

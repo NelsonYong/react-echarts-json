@@ -1,6 +1,6 @@
 import { graphic } from 'echarts'
 import { useEffect } from 'react'
-import { useInjection, useEcharts } from '../../packages'
+import { useEcharts, InjectView } from '../../packages'
 
 const Demo = () => {
 	const { container: salesDemoContainer, chart } = useEcharts()
@@ -253,24 +253,24 @@ const Demo = () => {
 		],
 	}
 
-	useInjection(
-		{
-			chart: chart,
-			option,
-			id: 'demo',
-			name: 'demo',
-			container: salesDemoContainer,
-		},
-		[]
-	)
-
 	useEffect(() => {
 		if (chart.current) {
 			chart.current?.setOption(option)
 		}
 	}, [option])
 
-	return <div ref={salesDemoContainer} style={style} />
+	return (
+		<>
+			<InjectView
+				chart={chart}
+				option={option}
+				id="demo"
+				name="示例0"
+				renderFlag={true}
+			/>
+			<div ref={salesDemoContainer} style={style} />
+		</>
+	)
 }
 
 export default Demo

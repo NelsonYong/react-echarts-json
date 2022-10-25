@@ -1,5 +1,5 @@
+import React, { useMemo } from 'react'
 import { useBoolean } from 'ahooks'
-import { useMemo } from 'react'
 import { Col, Row, Switch } from 'antd'
 import ReactJson from 'react-json-view'
 import { EChartsOption } from 'echarts/types/dist/echarts'
@@ -11,13 +11,13 @@ import useEchartsTool from '../../hooks/useInjection'
 import { ControlType } from '../../hooks/useInjection/charts'
 import useLogs from '../../hooks/useLogs'
 
-const OptionView = ({
+const ReactEchartsJson: React.FC<ControlType & { darkMode?: boolean }> = ({
 	id,
 	name,
 	chart,
 	option,
 	darkMode,
-}: ControlType & { darkMode?: boolean }) => {
+}) => {
 	const { tool } = useEchartsTool({})
 	const logs = useLogs()
 	const event = useEventEmitter({ global: true })
@@ -90,4 +90,4 @@ const OptionView = ({
 	)
 }
 
-export default OptionView
+export default ReactEchartsJson

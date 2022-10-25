@@ -1,6 +1,5 @@
-import { graphic } from 'echarts'
 import { useEffect } from 'react'
-import { useInjection, useEcharts } from '../../packages'
+import { useEcharts, InjectView } from '../../packages'
 
 const Demo4 = () => {
 	const { container: salesDemoContainer, chart } = useEcharts()
@@ -113,16 +112,6 @@ const Demo4 = () => {
 			},
 		],
 	}
-	useInjection(
-		{
-			chart: chart,
-			option,
-			id: 'demo4',
-			name: '象牙图',
-			container: salesDemoContainer,
-		},
-		[]
-	)
 
 	useEffect(() => {
 		if (chart.current) {
@@ -130,7 +119,18 @@ const Demo4 = () => {
 		}
 	}, [])
 
-	return <div ref={salesDemoContainer} style={style} />
+	return (
+		<>
+			<InjectView
+				chart={chart}
+				option={option}
+				id="demo4"
+				name="示例4"
+				renderFlag={true}
+			/>
+			<div ref={salesDemoContainer} style={style} />
+		</>
+	)
 }
 
 export default Demo4

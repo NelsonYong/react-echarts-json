@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useRef, useState } from 'react'
+import React, { useEffect, useMemo, useRef, useState } from 'react'
 import { Space, Button, Drawer, Radio, Row, Divider, Tabs, Switch } from 'antd'
 import {
 	CloseOutlined,
@@ -31,7 +31,9 @@ import LogView from '../LogView'
 
 const { TabPane } = Tabs
 
-const EchartDefaultView = ({ github = false }: { github?: boolean }) => {
+const EchartDefaultView: React.FC<{ github?: boolean }> = ({
+	github = false,
+}) => {
 	const event = useChartEventEmitter({ global: true })
 	const { tool } = useInjection({})
 	const { runSelect } = useChartSelect({})

@@ -1,5 +1,5 @@
 import { useEffect } from 'react'
-import { useInjection, useEcharts } from '../../packages'
+import { useInjection, useEcharts, InjectView } from '../../packages'
 
 const colorArr = [
 	'#218de0',
@@ -214,22 +214,25 @@ const Demo2 = () => {
 			},
 		],
 	}
-	useInjection(
-		{
-			chart: chart,
-			option,
-			id: 'demo2',
-			name: 'demo2',
-		},
-		[]
-	)
+
 	useEffect(() => {
 		if (chart.current) {
 			chart.current?.setOption(option)
 		}
 	}, [])
 
-	return <div ref={salesDemoContainer} style={style} />
+	return (
+		<>
+			<InjectView
+				chart={chart}
+				option={option}
+				id="demo2"
+				name="示例2"
+				renderFlag={true}
+			/>
+			<div ref={salesDemoContainer} style={style} />
+		</>
+	)
 }
 
 export default Demo2

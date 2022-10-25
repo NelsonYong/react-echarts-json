@@ -1,5 +1,5 @@
-import { useEffect, useMemo, useState } from 'react'
-import { useInjection, useEcharts } from '../../packages'
+import { Suspense, useEffect, useMemo, useState } from 'react'
+import { useInjection, useEcharts, InjectView } from '../../packages'
 
 type r = 1 | '0'
 type p = string
@@ -210,22 +210,24 @@ const Demo = () => {
 		[state]
 	)
 
-	useInjection(
-		{
-			chart: chart,
-			option,
-			id: 'demo1',
-			name: 'demo1',
-		},
-		[option]
-	)
 	useEffect(() => {
 		if (chart.current) {
 			chart.current?.setOption(option)
 		}
 	}, [option])
 
-	return <div ref={salesDemoContainer} style={style} />
+	return (
+		<>
+			<InjectView
+				chart={chart}
+				option={option}
+				id="demo1"
+				name="示例1"
+				renderFlag={true}
+			/>
+			<div ref={salesDemoContainer} style={style} />
+		</>
+	)
 }
 
 export default Demo

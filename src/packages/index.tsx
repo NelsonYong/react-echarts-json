@@ -6,10 +6,11 @@ import useChartEventEmitter from './hooks/useChartEventEmitter'
 import useChartSelect from './hooks/useChartSelect'
 import { useCreateEditor } from './components/Editor/utils'
 
-import EchartDefaultView from './components/EchartDefaultView'
 import Editor from './components/Editor'
 import LogView from './components/LogView'
 import ReactEchartsJson from './components/ReactEchartsJson'
+import InjectView from './components/InjectView'
+import ViewContainer from './components/ViewContainer'
 
 export {
 	useMedia,
@@ -19,8 +20,9 @@ export {
 	useChartSelect,
 	useChartEventEmitter,
 	useCreateEditor,
-	EchartDefaultView,
 	Editor,
 	LogView,
 	ReactEchartsJson,
+	InjectView,
+	ViewContainer,
 }

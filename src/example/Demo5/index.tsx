@@ -1,6 +1,6 @@
 import { useEffect } from 'react'
 import { graphic } from 'echarts'
-import { useInjection, useEcharts } from '../../packages'
+import { useInjection, useEcharts, InjectView } from '../../packages'
 let mockData = [
 	{ time: '1-23', num: 0 },
 	{ time: '1-24', num: 1 },
@@ -215,7 +215,18 @@ const Demo4 = () => {
 		}
 	}, [])
 
-	return <div ref={salesDemoContainer} style={style} />
+	return (
+		<>
+			<InjectView
+				chart={chart}
+				option={option}
+				id="demo5"
+				name="示例5"
+				renderFlag={true}
+			/>
+			<div ref={salesDemoContainer} style={style} />
+		</>
+	)
 }
 
 export default Demo4
