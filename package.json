@@ -1,6 +1,6 @@
 {
 	"name": "react-echarts-json",
-	"version": "1.5.5",
+	"version": "2.0.0",
 	"files": [
 		"dist",
 		"package.json"
@@ -16,7 +16,7 @@
 	"types": "dist/src/packages/index.d.ts",
 	"scripts": {
 		"dev": "vite --mode development --host",
-		"build": "tsc && vite build --mode production",
+		"build": "vite build --mode production",
 		"build:types": "node scripts/build-types.js",
 		"start": " vite --mode development",
 		"deply": "chmod +x ./deply.sh  && ./deply.sh",
