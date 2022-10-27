@@ -1,5 +1,9 @@
 import React, { lazy, Suspense } from 'react'
-import { ChartType, EChartsOption } from '@/packages/hooks/useInjection'
+import {
+	ChartType,
+	ContainerType,
+	EChartsOption,
+} from '@/packages/hooks/useInjection'
 
 const View = lazy<
 	React.ComponentType<{
@@ -22,17 +26,12 @@ const InjectView: React.FC<{
 	option: EChartsOption
 	id: string
 	name: string
+	container?: ContainerType
 	renderFlag?: boolean
-}> = ({ chart, option, id, name, renderFlag = false }) => {
+}> = ({ renderFlag = false, ...rest }) => {
 	return renderFlag ? (
 		<Suspense fallback={<></>}>
-			<View
-				chart={chart}
-				option={option}
-				id={id}
-				name={name}
-				renderFlag={renderFlag}
-			/>
+			<View {...rest} renderFlag={renderFlag} />
 		</Suspense>
 	) : null
 }
