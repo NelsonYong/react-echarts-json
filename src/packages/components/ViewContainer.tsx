@@ -1,10 +1,12 @@
 import React, { lazy, Suspense, useMemo } from 'react'
 
-const ViewContainer: React.FC<{
-	renderable: boolean
-	view?: React.ReactNode
-	rest?: Record<string, any>
-}> = ({ renderable = false, view, ...rest }): JSX.Element => {
+const ViewContainer: React.FC<
+	{
+		renderable: boolean
+		view?: React.ReactNode
+		rest?: any[]
+	} & { [x: string]: any }
+> = ({ renderable = false, view, ...rest }): JSX.Element => {
 	const View = useMemo(() => {
 		return lazy(() => {
 			return new Promise((resolve) => {

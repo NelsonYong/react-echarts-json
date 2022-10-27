@@ -34,7 +34,7 @@ const Contain = () => {
 				</div>
 			</div>
 
-			<ViewContainer renderable={true}></ViewContainer>
+			<ViewContainer renderable={true} github={true}></ViewContainer>
 		</div>
 	)
 }
