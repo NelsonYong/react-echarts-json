@@ -28,6 +28,8 @@ $ yarn add react-echarts-json
 
 Use the container that displays the view
 
+renderable can control asynchronous loading without worrying about importing resources
+
 ```typescript
 import { ViewContainer } from 'react-echarts-json'
 import 'react-echarts-json/dist/style.css'
