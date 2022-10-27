@@ -29,28 +29,25 @@ $ yarn add react-echarts-json
 Use the container that displays the view
 
 ```typescript
-import { EchartDefaultView } from 'react-echarts-json'
+import { ViewContainer } from 'react-echarts-json'
 import 'react-echarts-json/dist/style.css'
 
 // view
-;<EchartDefaultView />
+// EchartDefaultView --- Default view component
+;<ViewContainer renderable={true}></ViewContainer>
 ```
 
 You need to inject messages in the components using echarts(jsx or tsx)
 
 ```typescript
-import { useInjection } from 'react-echarts-json'
-
-useInjection(
-	{
-		chart: chart,
-		option,
-		id: 'demo',
-		name: 'demo',
-		container: null, // partial
-	},
-	[deps] // dependent
-)
+import { InjectView } from 'react-echarts-json'
+;<InjectView
+	chart={chart}
+	option={option}
+	id="demo"
+	name="demo"
+	renderFlag={true}
+/>
 ```
 
 ## 👨‍💻👩🏻‍💻 Custom view
@@ -66,29 +63,35 @@ import {
 	useChartSelect,
 	useChartEventEmitter,
 	useCreateEditor,
-	EchartDefaultView,
+	ViewContainer,
 	Editor,
 	LogView,
+	InjectView,
 	ReactEchartsJson,
 } from 'react-echarts-json'
-
-// EchartDefaultView --- Default view component
-
-// components
-// Editor --- code Editor Copomponent
-// LogView --- echart log
-// ReactEchartsJson --- echart option json view
-
-// hooks
-// useDarkMode --- dark theme
-// useMedia --- media
-// useEcharts --- for fast create demo
-// useChartSelect --- select active chart
-// useCreateEditor --- createEditor and run code # If you don t use the Editor component then you need to use this hook
-// useChartEventEmitter --- chart eventBus
-
-// # Can you use hook and component to customize the components you want.The EchartDefaultView component is made up of them.
 ```
+
+### ViewContainer
+
+Display container
+
+### Components
+
+- Editor --- code Editor Copomponent
+- LogView --- echart log
+- ReactEchartsJson --- echart option json view
+- InjectView --- inject chart
+
+### Hooks
+
+- useDarkMode --- dark theme
+- useMedia --- media
+- useEcharts --- for fast create demo
+- useChartSelect --- select active chart
+- useCreateEditor --- createEditor and run code # If you don t use the Editor component then you need to use this hook
+- useChartEventEmitter --- chart eventBus
+
+#### Can you use hook and component to customize the components you want.The EchartDefaultView component is made up of them.
 
 ## 🖼 View
 

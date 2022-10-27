@@ -3,13 +3,22 @@ import { useEffect, useRef } from 'react'
 
 import type React from 'react'
 import type { Charts } from './charts'
-import type { EChartsOption, EChartsType } from 'echarts/types/dist/echarts'
+import type {
+	EChartsOption as _EChartsOption,
+	EChartsType,
+} from 'echarts/types/dist/echarts'
 
 import _Charts from './charts'
 import Log from '../useLogs/log'
 import type { Logs } from '../useLogs/log'
 
 import useChartEventEmitter from '../useChartEventEmitter'
+
+export type ChartType = React.MutableRefObject<EChartsType | undefined>
+
+export type ContainerType = React.RefObject<HTMLDivElement>
+
+export type EChartsOption = _EChartsOption
 
 const useInjection = (
 	{
@@ -22,8 +31,8 @@ const useInjection = (
 		id?: string
 		name?: string
 		option?: EChartsOption
-		chart?: React.MutableRefObject<EChartsType | undefined>
-		container?: React.RefObject<HTMLDivElement>
+		chart?: ChartType
+		container?: ContainerType
 	},
 	deps?: React.DependencyList | undefined
 ) => {

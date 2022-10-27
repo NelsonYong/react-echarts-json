@@ -1,7 +1,9 @@
+import React, { useEffect, useMemo, useState } from 'react'
 import ReactJson from 'react-json-view'
+
 import useChartEventEmitter from '../../hooks/useChartEventEmitter'
 import useLogs from '../../hooks/useLogs'
-import { useEffect, useMemo, useState } from 'react'
+
 import { LogType } from '../../hooks/useLogs/log'
 
 import { dark, light } from '../EchartDefaultView/style'
@@ -17,7 +19,10 @@ const colors = [
 	'#5C1CF0',
 ]
 
-const LogView = ({ id, darkMode }: { darkMode?: boolean; id?: string }) => {
+const LogView: React.FC<{ darkMode?: boolean; id?: string }> = ({
+	id,
+	darkMode,
+}) => {
 	const event = useChartEventEmitter({ global: true })
 	const logs = useLogs()
 

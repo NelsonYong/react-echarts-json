@@ -1,5 +1,5 @@
 import { useEffect, useRef } from 'react'
-import { useInjection } from '../../packages'
+import { InjectView } from '../../packages'
 import * as echarts from 'echarts'
 
 import { chinaMap, chinaMapOutline } from './map'
@@ -403,17 +403,18 @@ const Map = () => {
 		}
 	}, [])
 
-	useInjection(
-		{
-			chart: chart,
-			option,
-			id: 'map',
-			name: 'map',
-		},
-		[]
+	return (
+		<>
+			<InjectView
+				chart={chart}
+				option={option}
+				id="map"
+				name="中国地图"
+				renderFlag={true}
+			/>
+			<div ref={containerRef} style={style} />
+		</>
 	)
-
-	return <div ref={containerRef} style={style} />
 }
 
 export default Map

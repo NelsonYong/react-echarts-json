@@ -1,5 +1,15 @@
-import { useEffect, useMemo, useRef, useState } from 'react'
-import { Space, Button, Drawer, Radio, Row, Divider, Tabs, Switch } from 'antd'
+import React, { useEffect, useMemo, useRef, useState } from 'react'
+import {
+	Space,
+	Button,
+	Drawer,
+	Radio,
+	Row,
+	Divider,
+	Tabs,
+	Switch,
+	Col,
+} from 'antd'
 import {
 	CloseOutlined,
 	DownOutlined,
@@ -31,7 +41,9 @@ import LogView from '../LogView'
 
 const { TabPane } = Tabs
 
-const EchartDefaultView = ({ github = false }: { github?: boolean }) => {
+const EchartDefaultView: React.FC<{ github?: boolean }> = ({
+	github = false,
+}) => {
 	const event = useChartEventEmitter({ global: true })
 	const { tool } = useInjection({})
 	const { runSelect } = useChartSelect({})
@@ -141,19 +153,22 @@ const EchartDefaultView = ({ github = false }: { github?: boolean }) => {
 						extra={
 							<Space size={16}>
 								{github && (
-									<span>
-										<GithubOutlined
-											style={{
-												fontSize: 24,
-											}}
-											onClick={() => {
-												window.open(
-													'https://github.com/NelsonYong/react-echarts-json',
-													'react-echarts-json'
-												)
-											}}
-										/>
-										<span
+									<Row wrap={false}>
+										<Col>
+											<GithubOutlined
+												style={{
+													fontSize: 24,
+												}}
+												onClick={() => {
+													window.open(
+														'https://github.com/NelsonYong/react-echarts-json',
+														'react-echarts-json'
+													)
+												}}
+											/>
+										</Col>
+
+										<Col
 											style={{
 												fontSize: 16,
 												marginLeft: 6,
@@ -161,8 +176,8 @@ const EchartDefaultView = ({ github = false }: { github?: boolean }) => {
 											}}
 										>
 											star
-										</span>
-									</span>
+										</Col>
+									</Row>
 								)}
 
 								<Switch

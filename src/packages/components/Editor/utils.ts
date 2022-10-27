@@ -6,6 +6,7 @@ import { transform as babelTransform } from '@babel/standalone'
 import useInjection from '../../hooks/useInjection'
 import useChartEventEmitter from '../../hooks/useChartEventEmitter'
 
+
 // 动态创建方法
 export function useCreateEditor({
 	activeId,
