@@ -267,6 +267,7 @@ const Demo = () => {
 				id="demo"
 				name="示例0"
 				renderFlag={true}
+				container={salesDemoContainer}
 			/>
 			<div ref={salesDemoContainer} style={style} />
 		</>
